@@ -1,9 +1,17 @@
-export default function ColorRectangle ({ colors }) {
+ interface Color {
+    name: string;
+    value: string;
+  }
+
+const ColorRectangle: React.FC<{ colors: Color[] }> = ({ colors }) => {
     return (
-      <div className="flex flex-wrap">
+        <div className="flex w-full flex-wrap">
         {colors.map((color, index) => (
-          <div key={index} className="w-1/3 p-2">
-            <div className="h-20 rounded-lg mb-2" style={{ backgroundColor: color.value }}></div>
+          <div key={index} className="px-5">
+            <div
+              className="border-2 h-20 w-30 rounded-lg mb-2"
+              style={{ backgroundColor: color.value }}
+            ></div>
             <p>{color.name}</p>
           </div>
         ))}
@@ -11,3 +19,4 @@ export default function ColorRectangle ({ colors }) {
     );
   };
   
+  export default ColorRectangle;

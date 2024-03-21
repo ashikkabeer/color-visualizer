@@ -19,18 +19,12 @@ import { Textarea } from "@/components/ui/textarea";
 const FormSchema = z.object({
   variables: z.string(),
 });
-interface Color {
+export interface Color {
   name: string;
   value: string;
 }
 export default function Home() {
   const [colors, setColors] = useState<Color[]>([]);
-
-
-
-
-
-
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -83,39 +77,48 @@ export default function Home() {
     };
     const cssString = JSON.stringify(data);
     const cssArray: string[] = cssVariablesToArray(cssString);
-    const convertedArray: any[] = convertCssArrayToObject(cssArray);
-    const modifiedArray: any[] = addCommasToValues(convertedArray);
-    console.log(typeof(modifiedArray));
+    const convertedArray: Color[] = convertCssArrayToObject(cssArray);
+    const modifiedArray: Color[] = addCommasToValues(convertedArray);
+    console.log(modifiedArray); // Debugging
     setColors(modifiedArray);
   }
   return (
-   <div className="w-screen  flex justify-center items-center h-screen p-3">
-     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-auto space-y-6">
-        <FormField
-          control={form.control}
-          name="variables"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Variables</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Tell us a little bit about yourself"
-                  className="w-full"
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>
-                Paste your css variable that you copied from shadcn themes
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
-    <ColorRectangle  colors={colors} />
-   </div>
+    <div className="w-screen flex  justify-center">
+      <div className="flex w-4/5 flex-col justify-center">
+        <div>
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="w-auto space-y-6"
+            >
+              <FormField
+                control={form.control}
+                name="variables"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Variables</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Paste Your CSS Variables here"
+                        className="w-full"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Paste your css variable that you copied from shadcn themes
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit">Submit</Button>
+            </form>
+          </Form>
+        </div>
+        <div>
+          <ColorRectangle colors={colors} />
+        </div>
+      </div>
+    </div>
   );
 }
