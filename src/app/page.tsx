@@ -83,7 +83,10 @@ export default function Home() {
     setColors(modifiedArray);
   }
   return (
-    <div className="w-screen flex  justify-center">
+    <div className="w-screen flex justify-center">
+      {/* <div>
+      <p className="text-9xl">Welcome To Visualizer</p>
+      </div> */}
       <div className="flex w-4/5 flex-col justify-center">
         <div>
           <Form {...form}>
@@ -112,6 +115,7 @@ export default function Home() {
                 )}
               />
               <Button type="submit">Submit</Button>
+              
             </form>
           </Form>
         </div>
