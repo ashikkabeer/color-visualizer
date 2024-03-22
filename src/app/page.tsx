@@ -83,11 +83,11 @@ export default function Home() {
     setColors(modifiedArray);
   }
   return (
-    <main className="w-screen min-h-screen overflow-hidden h-auto bg-primary-foreground flex justify-center">
+    <main className="rounded w-screen min-h-screen flex-col overflow-hidden h-auto bg-primary-foreground flex justify-center">
       <div className="pt-10 px-10 md:px-28 w-full md:w-4/5 ">
       <div className="h-auto">
         <p className="md:text-9xl text-5xl font-medium pb-10">ShadeSense</p>
-        <div className="">
+        <div className="items-center">
           <div>
             <Form {...form}>
               <form
