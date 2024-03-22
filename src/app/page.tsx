@@ -83,46 +83,54 @@ export default function Home() {
     setColors(modifiedArray);
   }
   return (
-    <div className="w-screen flex justify-center">
-      {/* <div>
-      <p className="text-9xl">Welcome To Visualizer</p>
-      </div> */}
-      <div className="flex w-4/5 flex-col justify-center">
-        <div>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-auto space-y-6"
-            >
-              <FormField
-                control={form.control}
-                name="variables"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Variables</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Paste Your CSS Variables here"
-                        className="w-full"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      Paste your css variable that you copied from shadcn themes
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit">Submit</Button>
-              
-            </form>
-          </Form>
-        </div>
-        <div>
-          <ColorRectangle colors={colors} />
+    <main className="w-screen min-h-screen overflow-hidden h-auto bg-primary-foreground flex justify-center">
+      <div className="pt-10 px-10 md:px-28 w-full md:w-4/5 ">
+      <div className="h-auto">
+        <p className="md:text-9xl text-5xl font-medium pb-10">ShadeSense</p>
+        <div className="">
+          <div>
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="w-auto  space-y-6"
+              >
+                <FormField
+                  control={form.control}
+                  name="variables"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xl">Paste your CSS Variables Here</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="eg:  --background: 0 0% 100%;
+                          --foreground: 240 10% 3.9%;
+                          --card: 0 0% 100%;
+                          --card-foreground: 240 10% 3.9%;
+                          --popover: 0 0% 100%;
+                          --popover-foreground: 240 10% 3.9%;
+                          --primary: 142.1 76.2% 36.3%;"
+                          className="w-full"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Paste your css variable that you copied from shadcn
+                        themes
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit">Submit</Button>
+              </form>
+            </Form>
+          </div>
+          <div className="py-10 pb-9">
+            <ColorRectangle colors={colors} />
+          </div>
         </div>
       </div>
-    </div>
+      </div>
+    </main>
   );
 }
