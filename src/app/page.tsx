@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import ColorRectangle from "@/components/rectangle";
 import { Button } from "@/components/ui/button";
+import { Github,Twitter  } from 'lucide-react';
+import Link from "next/link";
 import {
   Form,
   FormControl,
@@ -83,7 +85,13 @@ export default function Home() {
     setColors(modifiedArray);
   }
   return (
-    <main className="rounded w-screen min-h-screen flex-col overflow-hidden h-auto bg-primary-foreground flex justify-center">
+    <div className="main pt-4 bg-primary-foreground">
+      <div className="items-center gap-3 pr-9 header flex h-4 justify-end">
+      <Link className="text-2xl hover:underline italic" href={"https://twitter.com/ashikkabeerr"}>ashikkabeerr</Link>
+      <Link href={"https://github.com/ashikkabeer"}><Github className="size-8"/></Link>
+      <Link href={"https://twitter.com/ashikkabeerr"}><Twitter className="size-8"/></Link>
+      </div>
+      <main className="rounded w-screen min-h-screen flex-col overflow-hidden h-auto  flex justify-center">
       <div className="pt-10 px-10 md:px-28 w-full md:w-4/5 ">
       <div className="h-auto">
         <p className="md:text-9xl text-5xl font-medium pb-10">ShadeSense</p>
@@ -132,5 +140,7 @@ export default function Home() {
       </div>
       </div>
     </main>
+    </div>
+    
   );
 }
